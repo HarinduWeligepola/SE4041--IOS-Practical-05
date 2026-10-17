@@ -21,11 +21,19 @@ short, focused interactions, so the interface keeps the important
 information available at a glance and each action takes only a tap or
 two.
 
-## Creating the Xcode Project
+## Opening the Project
 
-1. Open Xcode and choose **File > New > Project**.
-2. Select **watchOS > App**, then **Next**.
-3. Use these settings:
+Open `QuickTasks.xcodeproj` in Xcode, choose an Apple Watch Simulator
+from the toolbar and press **Command + R**.
+
+The project targets watchOS 10.0 and Swift 5. If no watch simulator is
+listed, install the watchOS runtime from **Xcode > Settings > Components**
+(called **Platforms** in some versions), then add a simulator through
+**Window > Devices and Simulators**.
+
+## Original Project Settings
+
+The project was created with **watchOS > App**, **Watch-only App**, using:
 
 ```
 Product Name: QuickTasks
@@ -33,25 +41,9 @@ Interface:    SwiftUI
 Language:     Swift
 ```
 
-4. Choose **Watch-only App**. A Watch-only app runs independently on
-   Apple Watch and does not need an iPhone companion. Template labels
-   vary between Xcode versions, so pick whichever option creates a
-   watchOS app with no iOS companion.
-5. Save the project inside this repository folder.
-6. Add the files from `QuickTasks-Swift-Files/` to the watch app target
-   and replace the generated `ContentView.swift`. Make sure every new
-   file belongs to the watch app target, and keep only one `@main` entry
-   point.
-7. Select an Apple Watch Simulator in the device selector and press
-   **Command + R**.
-
-If no watch simulator is listed, install the watchOS runtime from
-**Xcode > Settings > Components** (called **Platforms** in some
-versions), then add a simulator through
-**Window > Devices and Simulators**.
-
-A watchOS 9 or later deployment target is required for
-`NavigationStack`, and the `#Preview` macro needs Xcode 15 or later.
+A Watch-only app runs independently on Apple Watch and does not need an
+iPhone companion. The bundle identifier is
+`lk.ac.sliit.QuickTasks.watchkitapp`.
 
 ## Source Files
 
@@ -114,9 +106,10 @@ every task and displayed on the detail screen.
 SE4041-Practical-05/
 ├── README.md
 ├── .gitignore
-├── QuickTasks-Swift-Files/      (source files to add to the Xcode project)
-├── QuickTasks.xcodeproj/        (created by Xcode)
-├── QuickTasks/                  (created by Xcode)
+├── QuickTasks.xcodeproj/
+│   ├── project.pbxproj
+│   └── xcshareddata/xcschemes/QuickTasks.xcscheme
+├── QuickTasks/
 │   ├── QuickTasksApp.swift
 │   ├── ContentView.swift
 │   ├── TaskItem.swift
@@ -127,13 +120,6 @@ SE4041-Practical-05/
     ├── 02-Completed-Tasks.png
     └── 03-Task-Detail.png
 ```
-
-The exact project structure varies with the Xcode version. Once the
-files have been added to the Xcode project, the
-`QuickTasks-Swift-Files/` folder can be deleted.
-
-Generated build output such as `DerivedData/` and personal `xcuserdata/`
-files are excluded by `.gitignore`.
 
 ## My Practical Evidence
 
